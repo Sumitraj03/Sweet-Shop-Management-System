@@ -173,15 +173,15 @@ export default function AddSweet() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-white via-pink-50/50 to-purple-50">
-      <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-pink-100">
+    <div className="min-h-screen bg-gradient-to-br from-gray-950 via-gray-900 to-gray-950">
+      <nav className="sticky top-0 z-50 bg-gray-900/95 backdrop-blur-xl border-b border-gray-800">
         <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
           <div className="flex items-center gap-3">
             <Link to="/" className="flex items-center gap-3">
               <div className="w-10 h-10 bg-gradient-to-br from-pink-500 to-purple-600 rounded-xl flex items-center justify-center">
                 <span className="text-white font-bold text-lg">🍬</span>
               </div>
-              <span className="text-2xl font-bold bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent">
+              <span className="text-2xl font-bold bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent">
                 Mithai House
               </span>
             </Link>
@@ -213,7 +213,7 @@ export default function AddSweet() {
                 </div>
                 <button
                   onClick={handleLogout}
-                  className="px-4 py-2 rounded-xl bg-gray-100 text-gray-700 hover:bg-gray-200 transition-all font-medium flex items-center gap-2"
+                  className="px-4 py-2 rounded-xl bg-gray-800 text-gray-300 hover:bg-gray-700 transition-all font-medium flex items-center gap-2"
                 >
                   <LogOut className="w-4 h-4" />
                   <span className="hidden md:inline">Logout</span>
@@ -233,7 +233,7 @@ export default function AddSweet() {
           
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
             <div>
-              <h1 className="text-3xl font-bold text-gray-900">
+              <h1 className="text-3xl font-bold text-gray-100">
                 Add New Sweet
               </h1>
               <p className="text-gray-600 mt-2">
@@ -251,7 +251,7 @@ export default function AddSweet() {
 
         {/* Success Message */}
         {success && (
-          <div className="mb-6 p-4 bg-gradient-to-r from-emerald-50 to-teal-50 border border-emerald-200 rounded-2xl">
+          <div className="mb-6 p-4 bg-gradient-to-r from-emerald-900/30 to-teal-900/30 border border-emerald-700 rounded-2xl">
             <div className="flex items-center gap-3">
               <CheckCircle className="w-5 h-5 text-emerald-600" />
               <div>
@@ -273,7 +273,7 @@ export default function AddSweet() {
 
         <div className="grid lg:grid-cols-3 gap-8">
           <div className="lg:col-span-2">
-            <div className="bg-white rounded-2xl shadow-xl border border-gray-100 p-8">
+            <div className="bg-gray-800 rounded-2xl shadow-xl border border-gray-700 p-8">
               <form onSubmit={handleSubmit} className="space-y-6">
                 {/* Sweet Name */}
                 <div>
@@ -289,8 +289,8 @@ export default function AddSweet() {
                       placeholder="e.g., Gulab Jamun, Kaju Katli, Rasgulla"
                       className={`w-full pl-12 pr-4 py-3.5 border rounded-xl focus:outline-none focus:ring-2 ${
                         errors.name 
-                          ? "border-red-300 focus:ring-red-500 focus:border-transparent" 
-                          : "border-gray-200 bg-gray-50 focus:ring-pink-500 focus:border-transparent"
+                          ? "border-red-600 text-white focus:ring-red-500 focus:border-transparent bg-red-900/20" 
+                          : "border-gray-600 bg-gray-700 text-gray-100 focus:ring-pink-500 focus:border-transparent"
                       }`}
                     />
                     <Package className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
@@ -392,7 +392,7 @@ export default function AddSweet() {
                 </div>
 
               
-                <div className="pt-6 border-t border-gray-100">
+                <div className="pt-6 border-t border-gray-700">
                   <div className="flex flex-col sm:flex-row gap-3">
                     <button
                       type="submit"
@@ -424,7 +424,7 @@ export default function AddSweet() {
                     
                     <Link
                       to="/inventory"
-                      className="flex-1 px-6 py-3.5 border-2 border-gray-200 text-gray-700 rounded-xl hover:bg-gray-50 transition-all font-semibold text-center"
+                      className="flex-1 px-6 py-3.5 border-2 border-gray-600 text-gray-300 rounded-xl hover:bg-gray-700 transition-all font-semibold text-center"
                     >
                       Cancel
                     </Link>
@@ -459,8 +459,8 @@ export default function AddSweet() {
                 </ul>
               </div>
 
-              <div className="bg-white rounded-2xl border border-gray-100 p-6 shadow-sm">
-                <h3 className="font-bold text-gray-900 mb-4">Popular Categories</h3>
+              <div className="bg-gray-700 rounded-2xl border border-gray-600 p-6 shadow-sm">
+                <h3 className="font-bold text-gray-100 mb-4">Popular Categories</h3>
                 <div className="flex flex-wrap gap-2">
                   {popularCategories.map((cat, index) => (
                     <button
@@ -475,35 +475,35 @@ export default function AddSweet() {
                 </div>
               </div>
 
-              <div className="bg-white rounded-2xl border border-gray-100 p-6 shadow-sm">
-                <h3 className="font-bold text-gray-900 mb-4">Quick Stock Suggestions</h3>
+              <div className="bg-gray-700 rounded-2xl border border-gray-600 p-6 shadow-sm">
+                <h3 className="font-bold text-gray-100 mb-4">Quick Stock Suggestions</h3>
                 <div className="space-y-3">
                   <div className="flex justify-between items-center text-sm">
-                    <span className="text-gray-600">Small batch</span>
+                    <span className="text-gray-400">Small batch</span>
                     <button
                       type="button"
                       onClick={() => setFormData({...formData, quantity: "10"})}
-                      className="px-3 py-1 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 text-xs"
+                      className="px-3 py-1 bg-gray-600 text-gray-300 rounded-lg hover:bg-gray-500 text-xs"
                     >
                       10 kgs
                     </button>
                   </div>
                   <div className="flex justify-between items-center text-sm">
-                    <span className="text-gray-600">Medium batch</span>
+                    <span className="text-gray-400">Medium batch</span>
                     <button
                       type="button"
                       onClick={() => setFormData({...formData, quantity: "25"})}
-                      className="px-3 py-1 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 text-xs"
+                      className="px-3 py-1 bg-gray-600 text-gray-300 rounded-lg hover:bg-gray-500 text-xs"
                     >
                       25 kgs
                     </button>
                   </div>
                   <div className="flex justify-between items-center text-sm">
-                    <span className="text-gray-600">Large batch</span>
+                    <span className="text-gray-400">Large batch</span>
                     <button
                       type="button"
                       onClick={() => setFormData({...formData, quantity: "50"})}
-                      className="px-3 py-1 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 text-xs"
+                      className="px-3 py-1 bg-gray-600 text-gray-300 rounded-lg hover:bg-gray-500 text-xs"
                     >
                       50 kgs
                     </button>
@@ -515,12 +515,12 @@ export default function AddSweet() {
         </div>
       </div>
 
-      <footer className="bg-white border-t border-gray-100 mt-12">
+      <footer className="bg-gray-800 border-t border-gray-700 mt-12">
         <div className="max-w-7xl mx-auto px-6 py-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="flex items-center gap-3">
               <div className="w-8 h-8 bg-gradient-to-br from-pink-500 to-purple-600 rounded-lg"></div>
-              <span className="text-xl font-bold text-gray-900">Mithai House</span>
+              <span className="text-xl font-bold text-gray-100">Mithai House</span>
             </div>
             
             <div className="flex gap-6 text-sm text-gray-600">

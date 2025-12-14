@@ -224,15 +224,15 @@ export default function Inventory() {
   const stats = calculateStats();
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-white via-pink-50/50 to-purple-50">
-      <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-pink-100">
+    <div className="min-h-screen bg-gradient-to-br from-gray-950 via-gray-900 to-gray-950">
+      <nav className="sticky top-0 z-50 bg-gray-900/95 backdrop-blur-xl border-b border-gray-800">
         <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
           <div className="flex items-center gap-3">
             <Link to="/" className="flex items-center gap-3">
               <div className="w-10 h-10 bg-gradient-to-br from-pink-500 to-purple-600 rounded-xl flex items-center justify-center">
                 <span className="text-white font-bold text-lg">🍬</span>
               </div>
-              <span className="text-2xl font-bold bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent">
+              <span className="text-2xl font-bold bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent">
                 Mithai House
               </span>
             </Link>
@@ -258,13 +258,13 @@ export default function Inventory() {
                     {user.fullName?.charAt(0).toUpperCase()}
                   </div>
                   <div className="hidden md:block">
-                    <p className="text-sm font-medium text-gray-700">{user.fullName}</p>
+                    <p className="text-sm font-medium text-gray-300">{user.fullName}</p>
                     <p className="text-xs text-gray-500 capitalize">{user.role}</p>
                   </div>
                 </div>
                 <button
                   onClick={handleLogout}
-                  className="px-4 py-2 rounded-xl bg-gray-100 text-gray-700 hover:bg-gray-200 transition-all font-medium flex items-center gap-2"
+                  className="px-4 py-2 rounded-xl bg-gray-800 text-gray-300 hover:bg-gray-700 transition-all font-medium flex items-center gap-2"
                 >
                   <LogOut className="w-4 h-4" />
                   <span className="hidden md:inline">Logout</span>
@@ -283,7 +283,7 @@ export default function Inventory() {
                 <ArrowLeft className="w-4 h-4" />
                 Back to Home
               </Link>
-              <h1 className="text-3xl font-bold text-gray-900">
+              <h1 className="text-3xl font-bold text-gray-100">
                 Your Inventory
               </h1>
               <p className="text-gray-600 mt-2">
@@ -360,8 +360,8 @@ export default function Inventory() {
           </div>
         </div>
 
-        <div className="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden mb-8">
-          <div className="p-6 border-b border-gray-100">
+        <div className="bg-gray-800 rounded-2xl shadow-xl border border-gray-700 overflow-hidden mb-8">
+          <div className="p-6 border-b border-gray-700">
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
               <div className="relative flex-1 max-w-md">
                 <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
@@ -370,22 +370,22 @@ export default function Inventory() {
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder="Search sweets by name or category..."
-                  className="w-full pl-12 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent"
+                  className="w-full pl-12 pr-4 py-3 bg-gray-700 border border-gray-600 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent text-gray-100 placeholder-gray-500"
                 />
               </div>
               
               <div className="flex items-center gap-4">
                 <div className="flex items-center gap-2">
                   <Filter className="w-4 h-4 text-gray-500" />
-                  <span className="text-sm text-gray-600">Filter:</span>
+                  <span className="text-sm text-gray-400">Filter:</span>
                 </div>
                 <div className="flex gap-2">
                   <button
                     onClick={() => setFilter("all")}
                     className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
                       filter === "all" 
-                        ? "bg-pink-100 text-pink-700" 
-                        : "text-gray-600 hover:bg-gray-100"
+                        ? "bg-pink-900/30 text-pink-300" 
+                        : "text-gray-500 hover:bg-gray-800"
                     }`}
                   >
                     All
@@ -394,8 +394,8 @@ export default function Inventory() {
                     onClick={() => setFilter("low")}
                     className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
                       filter === "low" 
-                        ? "bg-amber-100 text-amber-700" 
-                        : "text-gray-600 hover:bg-gray-100"
+                        ? "bg-amber-900/30 text-amber-300" 
+                        : "text-gray-500 hover:bg-gray-800"
                     }`}
                   >
                     Low Stock (≤10)
@@ -404,8 +404,8 @@ export default function Inventory() {
                     onClick={() => setFilter("out")}
                     className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
                       filter === "out" 
-                        ? "bg-red-100 text-red-700" 
-                        : "text-gray-600 hover:bg-gray-100"
+                        ? "bg-red-900/30 text-red-300" 
+                        : "text-gray-500 hover:bg-gray-800"
                     }`}
                   >
                     Out of Stock
@@ -440,7 +440,7 @@ export default function Inventory() {
             <div className="overflow-x-auto">
               <table className="w-full">
                 <thead>
-                  <tr className="bg-gray-50">
+                  <tr className="bg-gray-700/50">
                     <th className="py-4 px-6 text-left text-sm font-semibold text-gray-700">Sweet Details</th>
                     <th className="py-4 px-6 text-left text-sm font-semibold text-gray-700">Category</th>
                     <th className="py-4 px-6 text-left text-sm font-semibold text-gray-700">Price</th>
@@ -451,9 +451,9 @@ export default function Inventory() {
                 </thead>
                 <tbody className="divide-y divide-gray-100">
                   {filteredSweets.map((sweet) => (
-                    <tr key={sweet._id} className="hover:bg-gray-50 transition-colors">
-                      <td className="py-4 px-6">
-                        <div className="font-semibold text-gray-900">{sweet.name}</div>
+                    <tr key={sweet._id} className="hover:bg-gray-700/50 transition-colors border-b border-gray-700">
+                      <td className="px-6 py-4">
+                        <div className="font-semibold text-gray-100">{sweet.name}</div>
                         <div className="text-xs text-gray-400 mt-1">
                           ID: {sweet._id}
                         </div>
@@ -466,7 +466,7 @@ export default function Inventory() {
                       <td className="py-4 px-6">
                         <div className="flex items-center gap-1">
                           <IndianRupee className="w-4 h-4 text-gray-500" />
-                          <span className="font-semibold text-gray-900">₹{sweet.price}</span>
+                          <span className="font-semibold text-gray-100">₹{sweet.price}</span>
                         </div>
                         <div className="text-sm text-gray-500">per kg</div>
                       </td>
@@ -525,7 +525,7 @@ export default function Inventory() {
           )}
           
           {!loading && filteredSweets.length > 0 && (
-            <div className="p-6 border-t border-gray-100 bg-gray-50">
+            <div className="p-6 border-t border-gray-700 bg-gray-700/30">
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div className="text-sm text-gray-600">
                   Showing {filteredSweets.length} of {sweets.length} items
@@ -546,9 +546,9 @@ export default function Inventory() {
       {/* Edit Modal */}
       {editingSweet && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full">
-            <div className="p-6 border-b border-gray-100">
-              <h3 className="text-xl font-bold text-gray-900">Edit Sweet</h3>
+          <div className="bg-gray-800 rounded-2xl shadow-2xl max-w-md w-full">
+            <div className="p-6 border-b border-gray-700">
+              <h3 className="text-xl font-bold text-gray-100">Edit Sweet</h3>
               <p className="text-gray-600 text-sm mt-1">Update sweet details</p>
             </div>
             
@@ -564,8 +564,8 @@ export default function Inventory() {
                   required
                   className={`w-full px-4 py-3 border rounded-xl focus:outline-none focus:ring-2 ${
                     editErrors.name 
-                      ? "border-red-300 focus:ring-red-500 focus:border-transparent" 
-                      : "border-gray-200 bg-gray-50 focus:ring-pink-500 focus:border-transparent"
+                      ? "border-red-600 text-white focus:ring-red-500 focus:border-transparent bg-red-900/20" 
+                      : "border-gray-600 bg-gray-700 text-gray-100 focus:ring-pink-500 focus:border-transparent"
                   }`}
                 />
                 {editErrors.name && (

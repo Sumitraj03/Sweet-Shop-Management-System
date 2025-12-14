@@ -86,39 +86,39 @@ export default function Signup() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-white via-pink-50/50 to-purple-50 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-gray-950 via-gray-900 to-gray-950 flex items-center justify-center p-4">
       <div className="max-w-md w-full">
         <div className="text-center mb-10">
           <Link to="/" className="inline-flex items-center gap-3 mb-6">
             <div className="w-12 h-12 bg-gradient-to-br from-pink-500 to-purple-600 rounded-xl flex items-center justify-center">
               <span className="text-white font-bold text-xl">🍬</span>
             </div>
-            <span className="text-2xl font-bold bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent">
+            <span className="text-2xl font-bold bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent">
               Mithai House
             </span>
           </Link>
-          <h1 className="text-3xl font-bold text-gray-900 mb-3">
+          <h1 className="text-3xl font-bold text-gray-100 mb-3">
             Create Account
           </h1>
-          <p className="text-gray-600">
+          <p className="text-gray-400">
             Join us to manage your sweet shop
           </p>
         </div>
 
-        <div className="bg-white rounded-2xl shadow-xl border border-gray-100 p-8">
+        <div className="bg-gray-800 rounded-2xl shadow-xl border border-gray-700 p-8">
           {error && (
-            <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-xl">
-              <p className="text-red-600 text-sm">{error}</p>
+            <div className="mb-6 p-4 bg-red-900/30 border border-red-700 rounded-xl">
+              <p className="text-red-400 text-sm">{error}</p>
             </div>
           )}
 
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-gray-300 mb-2">
                 Full Name
               </label>
               <div className="relative">
-                <User className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                <User className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500 w-5 h-5" />
                 <input
                   type="text"
                   name="fullname"
@@ -126,17 +126,17 @@ export default function Signup() {
                   onChange={handleChange}
                   required
                   placeholder="John Doe"
-                  className="w-full pl-12 pr-4 py-3.5 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent"
+                  className="w-full pl-12 pr-4 py-3.5 bg-gray-700 border border-gray-600 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent text-gray-100 placeholder-gray-500"
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-gray-300 mb-2">
                 Email Address
               </label>
               <div className="relative">
-                <Mail className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                <Mail className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500 w-5 h-5" />
                 <input
                   type="email"
                   name="email"
@@ -144,13 +144,13 @@ export default function Signup() {
                   onChange={handleChange}
                   required
                   placeholder="you@example.com"
-                  className="w-full pl-12 pr-4 py-3.5 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent"
+                  className="w-full pl-12 pr-4 py-3.5 bg-gray-700 border border-gray-600 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent text-gray-100 placeholder-gray-500"
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-gray-300 mb-2">
                 Account Type
               </label>
               <div className="grid grid-cols-2 gap-3">
@@ -159,8 +159,8 @@ export default function Signup() {
                   onClick={() => setFormData({...formData, role: 'customer'})}
                   className={`py-3.5 rounded-xl border transition-all font-medium ${
                     formData.role === 'customer'
-                      ? 'border-pink-500 bg-pink-50 text-pink-700'
-                      : 'border-gray-200 text-gray-700 hover:bg-gray-50'
+                      ? 'border-pink-500 bg-pink-900/30 text-pink-300'
+                      : 'border-gray-600 text-gray-300 hover:bg-gray-700'
                   }`}
                 >
                   Customer
@@ -170,8 +170,8 @@ export default function Signup() {
                   onClick={() => setFormData({...formData, role: 'admin'})}
                   className={`py-3.5 rounded-xl border transition-all font-medium ${
                     formData.role === 'admin'
-                      ? 'border-purple-500 bg-purple-50 text-purple-700'
-                      : 'border-gray-200 text-gray-700 hover:bg-gray-50'
+                      ? 'border-purple-500 bg-purple-900/30 text-purple-300'
+                      : 'border-gray-600 text-gray-300 hover:bg-gray-700'
                   }`}
                 >
                   Admin
@@ -183,11 +183,11 @@ export default function Signup() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-gray-300 mb-2">
                 Password
               </label>
               <div className="relative">
-                <Lock className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                <Lock className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500 w-5 h-5" />
                 <input
                   type={showPassword ? "text" : "password"}
                   name="password"
@@ -195,12 +195,12 @@ export default function Signup() {
                   onChange={handleChange}
                   required
                   placeholder="••••••••"
-                  className="w-full pl-12 pr-12 py-3.5 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent"
+                  className="w-full pl-12 pr-12 py-3.5 bg-gray-700 border border-gray-600 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent text-gray-100 placeholder-gray-500"
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                  className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-400"
                 >
                   {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                 </button>
@@ -211,11 +211,11 @@ export default function Signup() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-gray-300 mb-2">
                 Confirm Password
               </label>
               <div className="relative">
-                <Lock className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                <Lock className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500 w-5 h-5" />
                 <input
                   type={showConfirmPassword ? "text" : "password"}
                   name="confirmPassword"
@@ -223,12 +223,12 @@ export default function Signup() {
                   onChange={handleChange}
                   required
                   placeholder="••••••••"
-                  className="w-full pl-12 pr-12 py-3.5 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent"
+                  className="w-full pl-12 pr-12 py-3.5 bg-gray-700 border border-gray-600 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent text-gray-100 placeholder-gray-500"
                 />
                 <button
                   type="button"
                   onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                  className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                  className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-400"
                 >
                   {showConfirmPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                 </button>
@@ -240,15 +240,15 @@ export default function Signup() {
                 type="checkbox"
                 id="terms"
                 required
-                className="w-4 h-4 text-pink-600 border-gray-300 rounded focus:ring-pink-500"
+                className="w-4 h-4 text-pink-600 border-gray-600 rounded focus:ring-pink-500 bg-gray-700"
               />
-              <label htmlFor="terms" className="ml-2 text-sm text-gray-600">
+              <label htmlFor="terms" className="ml-2 text-sm text-gray-400">
                 I agree to the{' '}
-                <Link to="/terms" className="text-pink-600 hover:text-pink-700 font-medium">
+                <Link to="/terms" className="text-pink-400 hover:text-pink-300 font-medium">
                   Terms of Service
                 </Link>{' '}
                 and{' '}
-                <Link to="/privacy" className="text-pink-600 hover:text-pink-700 font-medium">
+                <Link to="/privacy" className="text-pink-400 hover:text-pink-300 font-medium">
                   Privacy Policy
                 </Link>
               </label>
@@ -273,9 +273,9 @@ export default function Signup() {
             </button>
 
             <div className="text-center">
-              <p className="text-gray-600 text-sm">
+              <p className="text-gray-400 text-sm">
                 Already have an account?{' '}
-                <Link to="/login" className="text-pink-600 hover:text-pink-700 font-semibold">
+                <Link to="/login" className="text-pink-400 hover:text-pink-300 font-semibold">
                   Sign in
                 </Link>
               </p>

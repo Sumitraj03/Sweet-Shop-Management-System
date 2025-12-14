@@ -159,7 +159,7 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-white via-pink-50/50 to-purple-50">
+    <div className="min-h-screen bg-gradient-to-br from-gray-950 via-gray-900 to-gray-950">
       {/* Success Message Toast */}
       {showSuccessMessage && (
         <div className="fixed top-4 right-4 z-50 animate-in slide-in-from-right">
@@ -176,7 +176,7 @@ export default function Home() {
         </div>
       )}
 
-      <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-pink-100">
+      <nav className="sticky top-0 z-50 bg-gray-900/95 backdrop-blur-xl border-b border-gray-800">
         <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 bg-gradient-to-br from-pink-500 to-purple-600 rounded-xl flex items-center justify-center">
@@ -188,13 +188,13 @@ export default function Home() {
           </div>
 
           <div className="hidden md:flex items-center gap-8 font-medium">
-            <Link to="/" className="text-gray-700 hover:text-pink-600 transition-colors px-3 py-2 rounded-lg hover:bg-pink-50">
+            <Link to="/" className="text-gray-300 hover:text-pink-400 transition-colors px-3 py-2 rounded-lg hover:bg-gray-800">
               Home
             </Link>
-            <Link to="/inventory" className="text-gray-700 hover:text-pink-600 transition-colors px-3 py-2 rounded-lg hover:bg-pink-50">
+            <Link to="/inventory" className="text-gray-300 hover:text-pink-400 transition-colors px-3 py-2 rounded-lg hover:bg-gray-800">
               Inventory
             </Link>
-            <Link to="/purchases" className="text-gray-700 hover:text-pink-600 transition-colors px-3 py-2 rounded-lg hover:bg-pink-50">
+            <Link to="/purchases" className="text-gray-300 hover:text-pink-400 transition-colors px-3 py-2 rounded-lg hover:bg-gray-800">
               Purchases
             </Link>
           </div>
@@ -213,7 +213,7 @@ export default function Home() {
                 </div>
                 <button
                   onClick={handleLogout}
-                  className="px-4 py-2 rounded-xl bg-gray-100 text-gray-700 hover:bg-gray-200 transition-all font-medium flex items-center gap-2"
+                  className="px-4 py-2 rounded-xl bg-gray-800 text-gray-300 hover:bg-gray-700 transition-all font-medium flex items-center gap-2"
                 >
                   <LogOut className="w-4 h-4" />
                   <span className="hidden md:inline">Logout</span>
@@ -223,13 +223,13 @@ export default function Home() {
               <>
                 <Link
                   to="/login"
-                  className="px-5 py-2.5 rounded-xl border border-purple-200 text-purple-700 hover:bg-purple-50 transition-all font-medium"
+                  className="px-5 py-2.5 rounded-xl border border-purple-600 text-purple-400 hover:bg-gray-800 transition-all font-medium"
                 >
                   Login
                 </Link>
                 <Link
                   to="/signup"
-                  className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-pink-500 to-purple-600 text-white hover:from-pink-600 hover:to-purple-700 transition-all shadow-lg hover:shadow-xl font-medium"
+                  className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-pink-600 to-purple-600 text-white hover:from-pink-700 hover:to-purple-700 transition-all shadow-lg hover:shadow-xl font-medium"
                 >
                   Sign Up
                 </Link>
@@ -243,26 +243,26 @@ export default function Home() {
         <section className="py-12 md:py-20">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-pink-100 to-purple-100 text-pink-700 px-4 py-2 rounded-full mb-6">
+              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-pink-950 to-purple-950 text-pink-300 px-4 py-2 rounded-full mb-6">
                 <Sparkles className="w-4 h-4" />
                 <span className="font-semibold text-sm">
                   {user ? `Welcome back, ${user.fullName}!` : 'Premium Sweets Collection'}
                 </span>
               </div>
               
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-100 leading-tight mb-6">
                 {user ? (
                   <>
-                    Welcome to Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-600 to-purple-600">Dashboard</span>
+                    Welcome to Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-purple-400">Dashboard</span>
                   </>
                 ) : (
                   <>
-                    Taste the <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-600 to-purple-600">Authentic</span> Sweetness
+                    Taste the <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-purple-400">Authentic</span> Sweetness
                   </>
                 )}
               </h1>
               
-              <p className="text-lg text-gray-600 mb-8 max-w-xl">
+              <p className="text-lg text-gray-400 mb-8 max-w-xl">
                 {user ? (
                   user.role === 'admin' 
                     ? 'Manage your inventory, track purchases, and oversee your sweet shop operations.'
@@ -285,7 +285,7 @@ export default function Home() {
                       </Link>
                       <Link
                         to="/purchases"
-                        className="px-8 py-3.5 border-2 border-purple-200 text-purple-700 rounded-xl hover:bg-purple-50 transition-all font-semibold inline-flex items-center gap-2"
+                        className="px-8 py-3.5 border-2 border-purple-500 text-purple-300 rounded-xl hover:bg-purple-950 transition-all font-semibold inline-flex items-center gap-2"
                       >
                         View Purchases
                         <ChevronRight className="w-5 h-5" />
@@ -302,7 +302,7 @@ export default function Home() {
                       </button>
                       <Link
                         to="/purchases"
-                        className="px-8 py-3.5 border-2 border-purple-200 text-purple-700 rounded-xl hover:bg-purple-50 transition-all font-semibold inline-flex items-center gap-2"
+                        className="px-8 py-3.5 border-2 border-purple-500 text-purple-300 rounded-xl hover:bg-purple-950 transition-all font-semibold inline-flex items-center gap-2"
                       >
                         My Orders
                         <Package className="w-5 h-5" />
@@ -318,7 +318,7 @@ export default function Home() {
                       Explore Inventory
                       <ChevronRight className="w-5 h-5" />
                     </Link>
-                    <button className="px-8 py-3.5 border-2 border-purple-200 text-purple-700 rounded-xl hover:bg-purple-50 transition-all font-semibold">
+                    <button className="px-8 py-3.5 border-2 border-purple-500 text-purple-300 rounded-xl hover:bg-purple-950 transition-all font-semibold">
                       Watch Demo
                     </button>
                   </>
@@ -327,11 +327,11 @@ export default function Home() {
             </div>
 
             <div className="relative">
-              <div className="absolute -inset-4 bg-gradient-to-r from-pink-400 to-purple-400 rounded-3xl blur-2xl opacity-20"></div>
-              <div className="relative bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
+              <div className="absolute -inset-4 bg-gradient-to-r from-pink-600/20 to-purple-600/20 rounded-3xl blur-2xl opacity-20"></div>
+              <div className="relative bg-gray-800 rounded-2xl shadow-xl p-8 border border-gray-700">
                 <div className="flex items-center gap-3 mb-6">
-                  <Search className="w-5 h-5 text-purple-500" />
-                  <h3 className="text-xl font-semibold text-gray-800">
+                  <Search className="w-5 h-5 text-purple-400" />
+                  <h3 className="text-xl font-semibold text-gray-200">
                     {user ? 'Quick Search' : 'Find Your Favorite Sweet'}
                   </h3>
                 </div>
@@ -342,9 +342,9 @@ export default function Home() {
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     placeholder="Search sweets by name or category..."
-                    className="w-full pl-12 pr-4 py-4 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent"
+                    className="w-full pl-12 pr-4 py-4 bg-gray-700 border border-gray-600 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent text-gray-100 placeholder-gray-500"
                   />
-                  <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                  <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500 w-5 h-5" />
                 </div>
               </div>
             </div>
