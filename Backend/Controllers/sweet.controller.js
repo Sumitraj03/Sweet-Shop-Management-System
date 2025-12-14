@@ -211,6 +211,25 @@ export const searchSweets = async (req, res) => {
   }
 };
 
+export const getSweetByUser = async (req, res) => {
+  try {
+    const userId = req.id;
 
+    const sweets = await sweetModel
+      .find({ createdBy: userId })
+      .sort({ createdAt: -1 });
 
+    return res.status(200).json({
+      success: true,
+      count: sweets.length,
+      sweets,
+    });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({
+      success: false,
+      message: "Error fetching user sweets",
+    });
+  }
+};
 
