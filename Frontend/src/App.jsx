@@ -5,6 +5,7 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Purchases from './pages/Purchases';
 import Inventory from './pages/Inventory';
+import AddSweet from './pages/AddSweet';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/purchases" element={<Purchases />} />
         <Route path="/inventory" element={<Inventory />} />
+        <Route path="/add" element={<AddSweet />} />
         
       </Routes>
     </Router>

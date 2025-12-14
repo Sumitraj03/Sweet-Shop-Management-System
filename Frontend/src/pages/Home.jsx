@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { backend_url } from "../utils/constants";
 import { Link, useNavigate } from "react-router-dom";
-import { Search, ShoppingBag, Package, TrendingUp, Star, ChevronRight, Sparkles, User, LogOut, Plus, Minus } from "lucide-react";
+import { Search, ShoppingBag, Package, TrendingUp, Star, ChevronRight, Sparkles, User, LogOut, Plus, Minus, CheckCircle } from "lucide-react";
 
 export default function Home() {
   const [sweets, setSweets] = useState([]);
@@ -10,6 +10,9 @@ export default function Home() {
   const [searchQuery, setSearchQuery] = useState("");
   const [user, setUser] = useState(null);
   const [quantities, setQuantities] = useState({});
+  const [purchasingSweetId, setPurchasingSweetId] = useState(null);
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+  const [successMessage, setSuccessMessage] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -87,33 +90,60 @@ export default function Home() {
     const quantity = quantities[sweet._id] || 1;
     
     if (quantity > sweet.quantity) {
-      alert(`Only ${sweet.quantity} units available in stock`);
+      alert(`Only ${sweet.quantity} kgs available in stock`);
       return;
     }
 
-    try {
-      const purchaseData = {
-        sweetId: sweet._id,
-        name: sweet.name,
-        quantity: quantity,
-        price: sweet.price,
-        totalPrice: sweet.price * quantity
-      };
+    setPurchasingSweetId(sweet._id);
 
+    try {
       const res = await axios.post(
-        `${backend_url}/api/purchases`,
-        purchaseData,
+        `${backend_url}/api/sweets/${sweet._id}/purchase`,
+        { quantity },
         { withCredentials: true }
       );
 
       if (res.data.success) {
-        alert(`Purchase successful! ${quantity} x ${sweet.name} added to your orders`);
-        fetchSweets();
+        // Show success message
+        setSuccessMessage(`Successfully purchased ${quantity} x ${sweet.name} for ₹${(sweet.price * quantity).toFixed(2)}`);
+        setShowSuccessMessage(true);
+        
+        // Hide success message after 3 seconds
+        setTimeout(() => {
+          setShowSuccessMessage(false);
+          setSuccessMessage("");
+        }, 3000);
+
+        // Update local state immediately for better UX
+        setSweets(prevSweets => 
+          prevSweets.map(s => 
+            s._id === sweet._id 
+              ? { ...s, quantity: s.quantity - quantity }
+              : s
+          )
+        );
+
+        // Reset quantity for this sweet
+        setQuantities(prev => ({
+          ...prev,
+          [sweet._id]: 1
+        }));
+
+        // You could also refetch to get latest data
+        setTimeout(() => {
+          fetchSweets();
+        }, 500);
       } else {
         alert(res.data.message);
       }
     } catch (error) {
-      alert(error.response?.data?.message || "Purchase failed");
+      const errorMsg = error.response?.data?.message || "Purchase failed";
+      alert(errorMsg);
+      
+      // If purchase fails, refresh sweets to get accurate stock
+      fetchSweets();
+    } finally {
+      setPurchasingSweetId(null);
     }
   };
 
@@ -130,6 +160,22 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-white via-pink-50/50 to-purple-50">
+      {/* Success Message Toast */}
+      {showSuccessMessage && (
+        <div className="fixed top-4 right-4 z-50 animate-in slide-in-from-right">
+          <div className="bg-gradient-to-r from-emerald-500 to-teal-600 text-white rounded-xl shadow-xl p-4 max-w-md">
+            <div className="flex items-center gap-3">
+              <CheckCircle className="w-5 h-5" />
+              <div>
+                <p className="font-semibold">Purchase Successful!</p>
+                <p className="text-sm opacity-90">{successMessage}</p>
+                <p className="text-xs mt-1 opacity-80">View your orders in Purchases page</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
       <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-pink-100">
         <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
           <div className="flex items-center gap-3">
@@ -355,7 +401,7 @@ export default function Home() {
               <span className="text-sm text-gray-500">{filteredSweets.length} items</span>
               {user && user.role === 'admin' && (
                 <Link
-                  to="/inventory/add"
+                  to="/add"
                   className="ml-4 px-4 py-2 bg-gradient-to-r from-emerald-500 to-teal-600 text-white rounded-lg hover:from-emerald-600 hover:to-teal-700 transition-all text-sm font-medium"
                 >
                   + Add New
@@ -376,7 +422,7 @@ export default function Home() {
               <p className="text-gray-500 mb-6">Try a different search term</p>
               {user && user.role === 'admin' && (
                 <Link
-                  to="/inventory/add"
+                  to="/add"
                   className="px-6 py-3 bg-gradient-to-r from-emerald-500 to-teal-600 text-white rounded-lg hover:from-emerald-600 hover:to-teal-700 transition-all font-medium"
                 >
                   Add Your First Sweet
@@ -413,8 +459,8 @@ export default function Home() {
                     
                     <div className="flex justify-between items-center text-sm">
                       <span className="text-gray-600">Stock Available</span>
-                      <span className={`font-semibold ${sweet.quantity > 10 ? 'text-green-600' : 'text-amber-600'}`}>
-                        {sweet.quantity} units
+                      <span className={`font-semibold ${sweet.quantity > 10 ? 'text-green-600' : sweet.quantity === 0 ? 'text-red-600' : 'text-amber-600'}`}>
+                        {sweet.quantity} kgs
                       </span>
                     </div>
 
@@ -453,14 +499,21 @@ export default function Home() {
 
                   <button
                     onClick={() => handlePurchase(sweet)}
-                    disabled={sweet.quantity === 0}
+                    disabled={sweet.quantity === 0 || purchasingSweetId === sweet._id}
                     className={`mt-6 w-full py-3.5 rounded-xl font-semibold transition-all flex items-center justify-center gap-2 ${
                       sweet.quantity > 0
-                        ? "bg-gradient-to-r from-pink-500 to-purple-600 text-white hover:from-pink-600 hover:to-purple-700 shadow-lg hover:shadow-xl"
+                        ? purchasingSweetId === sweet._id
+                          ? "bg-gradient-to-r from-amber-500 to-orange-600 text-white cursor-wait"
+                          : "bg-gradient-to-r from-pink-500 to-purple-600 text-white hover:from-pink-600 hover:to-purple-700 shadow-lg hover:shadow-xl"
                         : "bg-gray-100 text-gray-400 cursor-not-allowed"
                     }`}
                   >
-                    {sweet.quantity > 0 ? (
+                    {purchasingSweetId === sweet._id ? (
+                      <>
+                        <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                        Processing...
+                      </>
+                    ) : sweet.quantity > 0 ? (
                       <>
                         <ShoppingBag className="w-5 h-5" />
                         Purchase Now

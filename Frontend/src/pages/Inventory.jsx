@@ -300,7 +300,7 @@ export default function Inventory() {
                 Refresh
               </button>
               <Link
-                to="/inventory/add"
+                to="/add"
                 className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-pink-500 to-purple-600 text-white hover:from-pink-600 hover:to-purple-700 transition-all shadow-lg hover:shadow-xl font-medium flex items-center gap-2"
               >
                 <Plus className="w-4 h-4" />
@@ -430,7 +430,7 @@ export default function Inventory() {
                   : "Start by adding your first sweet to inventory"}
               </p>
               <Link
-                to="/inventory/add"
+                to="/add"
                 className="px-6 py-3 bg-gradient-to-r from-pink-500 to-purple-600 text-white rounded-lg hover:from-pink-600 hover:to-purple-700 transition-all font-medium"
               >
                 Add Your First Sweet
