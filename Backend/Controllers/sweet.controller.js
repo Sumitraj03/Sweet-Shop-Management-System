@@ -12,7 +12,7 @@ export const add = async (req, res) => {
       });
     }
 
-    if (price < 0 || quantity < 0) {
+    if (price<0 || quantity<0) {
       return res.status(400).json({
         message: "Price and quantity cant be negative",
         success: false,
@@ -210,6 +210,7 @@ export const searchSweets = async (req, res) => {
     });
   }
 };
+
 
 
 

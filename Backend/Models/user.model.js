@@ -22,7 +22,6 @@ const userSchema = new mongoose.Schema({
         required:true,
         enum:['custumer','admin']
     },
-    purchases:[{type:mongoose.Schema.Types.ObjectId,ref:'Sweet'}]
 },{timestamps:true})
 
 
